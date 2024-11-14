@@ -19,12 +19,4 @@ public class FailedLogin {
     public JPanel getPanel2() {
         return panel2;
     }
-
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Successful Registration");
-        frame.setContentPane(new FailedLogin().panel2);
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-    }
 }

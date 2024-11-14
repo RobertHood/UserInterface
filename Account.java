@@ -1,8 +1,8 @@
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Scanner;
 
-public class Account {
+public class Account{
     private static int stt = 1;
     private String fname;
     private String lname;
@@ -22,13 +22,19 @@ public class Account {
         this.password = password;
         this.mobile = mobile;
     }
-    public void AddAccount() {
-        try{
-            accounts.add(this);
-            FileWriter oos = new FileWriter("accounts.txt");
-            oos.write(this.id + " " + this.fname + " " + this.lname +" "+ this.email + " " +this.username +" "+ this.password +" "+ this.mobile);
-            oos.close();
-        } catch (Exception e) {
+    public void AddAccount() throws IOException{
+        FileWriter fw = new FileWriter("Accounts.txt");
+        fw.write(this.username + " " + this.password + "\n");
+        fw.close();
+    }
+
+    public static boolean checklogin(String username, String password) throws IOException{
+        Scanner sc = new Scanner(new File("Accounts.txt"));
+        while (sc.hasNextLine()){
+            if(sc.next().equals(username) && sc.next().equals(password)){
+                return true;
+            }
         }
+        return false;
     }
 }
