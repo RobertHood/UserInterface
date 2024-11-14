@@ -12,11 +12,25 @@ public class userinterface {
     private JButton registerButton;
     private JButton loginButton;
     private JPasswordField password;
+    private JTextField firstname;
+
+    public void register() {
+        String fname = firstname.getText();
+        String lname = lastname.getText();
+        String eadd = email.getText();
+        String usr = username.getText();
+        String mpwd = new String(password.getPassword());
+        String mob = mobile.getText();
+
+        Account acc = new Account(fname, lname, eadd, usr, mpwd, mob);
+        acc.AddAccount();
+    }
 
     public userinterface() {
         registerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                register();
                 JFrame register = showNewWindow("Register Window",850,600);
                 register.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 register.setContentPane(new SuccessfulRegister().getPanel1());
